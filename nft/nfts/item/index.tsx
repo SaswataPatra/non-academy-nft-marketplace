@@ -1,11 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 
+import { NftMeta } from "@/types/nft";
 import { FunctionComponent } from "react";
 
+type NftItemProps ={
+    item : NftMeta
+}
 
-const NftItem: FunctionComponent = () => {
+const NftItem: FunctionComponent<NftItemProps> = ({item}) => {
   return (
     <>
+    
       <div className="flex-shrink-0">
         <img
           className={`h-full w-full object-cover`}
