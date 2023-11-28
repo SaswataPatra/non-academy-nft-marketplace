@@ -2,9 +2,9 @@
 /* eslint-disable @next/next/no-img-element */
 
 import type { NextPage } from 'next'
-import {BaseLayout} from '@/components'
+import { BaseLayout } from '../components'
 import NftList from '@/nfts/list'
-import nftImages from "../content/meta.json"
+import nfts from "../content/meta.json"
 import { NftMeta } from '@/types/nft'
 
 
@@ -22,7 +22,9 @@ const Home: NextPage = () => {
               Mint a NFT to get unlimited ownership forever!
             </p>
           </div>
-          <NftList nftImages = {nftImages as unknown as NftMeta[]}/>
+          <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
+            <NftList item={nfts as unknown as NftMeta[]}/>
+          </div>
         </div>
       </div>
     </BaseLayout>

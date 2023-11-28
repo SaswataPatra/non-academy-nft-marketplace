@@ -1,38 +1,34 @@
-import { FunctionComponent} from "react";
-import NftItem from "../item";
-import { NftMeta } from "@/types/nft";
+import { FunctionComponent } from "react";
 
-// interface NftImage {
-//   description: string;
-//   image: string;
-//   name: string;
-//   attributes: {
-//     trait_type: string;
-//     value: string;
+import { NftMeta } from "@/types/nft";
+import NftItem from "../item";
+
+// interface NftImageProps {
+//   item: {
+//     description: string;
+//     image: string;
+//     name: string;
+//     attributes: { trait_type: string; value: string }[];
 //   }[];
 // }
 
-interface NftImagesProps {
-  nftImages: NftMeta[];
+interface NftImageProps {
+  item: NftMeta[];
 }
-
-// type NftImagesProps = {
-//     nftImages : any[]
+// interface NftImageProps {
+//     item : any
 // }
 
-const NftList: FunctionComponent<NftImagesProps> = ({ nftImages }) => {
+const NftList: FunctionComponent<NftImageProps> = ({ item }) => {
   return (
     <>
-      <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-        {nftImages.map(nft =>
-             <div key={nft.image} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
-             <NftItem item ={nft}/>
-           </div>
-            )}
-       
-      </div>
+      {item.map((nft) => (
+        <div key={nft.image} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
+          <NftItem item={nft}/>
+        </div>
+      ))}
+      
     </>
   );
 };
-
 export default NftList;
