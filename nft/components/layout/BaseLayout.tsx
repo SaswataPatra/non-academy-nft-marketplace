@@ -4,6 +4,10 @@ import Navbar from "../navbar";
 interface ChildrenProps {
   children: ReactElement | ReactElement[];
 }
+// interface ChildrenProps {
+//   children: any
+// }
+
 
 const BaseLayout: FunctionComponent<ChildrenProps> = ({ children }) => {
   return (

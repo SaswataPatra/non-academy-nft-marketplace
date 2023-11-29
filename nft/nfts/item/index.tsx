@@ -46,7 +46,7 @@ const NftItem: FunctionComponent<NftItemProps> = ({ item }) => {
               </dd>
             </div>
             {item.attributes.map((attr : NftAttribute)=>(
-                <div className="flex flex-col px-4 pt-4">
+                <div key={attr.trait_type}className="flex flex-col px-4 pt-4">
               <dt className="order-2 text-sm font-medium text-gray-500">
                 {attr.trait_type}
               </dt>
