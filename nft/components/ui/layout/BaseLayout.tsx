@@ -1,6 +1,7 @@
 import { FunctionComponent, ReactElement } from "react";
 import Navbar from "../navbar";
 
+
 interface ChildrenProps {
   children: ReactElement | ReactElement[];
 }

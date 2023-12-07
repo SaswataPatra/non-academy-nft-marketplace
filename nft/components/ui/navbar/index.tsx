@@ -3,7 +3,8 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 // import logo from '../public/images/small-eth.webp';
-import logo from "../../public/images/small-eth.webp";
+// import logo from "../../public/images/small-eth.webp";
+import logo from "@images/small-eth.webp"
 import Link from "next/link";
 import ActiveLink from "../link";
 const navigation = [
@@ -44,7 +45,7 @@ export default function Navbar() {
                       <ActiveLink
                         key={item.name}
                         href={item.href}
-                        activeClass="bg-gray-900 text-white"
+                        activeclass="bg-gray-900 text-white"
                         
                         className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                         aria-current={item.current ? 'page' : undefined}
