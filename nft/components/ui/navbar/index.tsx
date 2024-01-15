@@ -7,6 +7,7 @@ import Image from "next/image";
 import logo from "@images/small-eth.webp"
 import Link from "next/link";
 import ActiveLink from "../link";
+import { useAccount } from "@/components/hooks";
 const navigation = [
   { name: "Marketplace", href: "/", current: true },
   { name: "Create NFT", href: "/nft/create", current: false },
@@ -17,6 +18,7 @@ function classNames(...classes: string[]) {
 }
 
 export default function Navbar() {
+  const {data} = useAccount("some random params")
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (

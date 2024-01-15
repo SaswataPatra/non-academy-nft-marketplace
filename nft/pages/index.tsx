@@ -11,9 +11,16 @@ import { useEffect, useState } from "react";
 import { ethers,formatUnits} from "ethers";
 
 const Home: NextPage = () => {
-  const { ethereum, provider } = useweb3();
-
-  const [accounts, setAccounts] = useState<string[] | null>(null);
+  
+  const { ethereum, provider,contract } = useweb3();
+  console.log("CONTRACT -", contract);
+  
+  const getInfo = async() =>{
+    // console.log(await contract!.getBalance())
+    console.log(await contract!.getAddress())
+  }
+  if(contract) console.log("THIS IS INFO",getInfo())
+  // const [accounts, setAccounts] = useState<string[] | null>(null);
 
   useEffect(() => {
     const fetchAccounts = async () => {
@@ -25,7 +32,7 @@ const Home: NextPage = () => {
         console.log("ADDRESS ",signer.address)
         const bal = provider.getBalance(signer.address)
         console.log("BALANCE ",formatUnits(await bal,"ether"))
-        setAccounts(res);
+        // setAccounts(res);
       }
     };
     fetchAccounts();
