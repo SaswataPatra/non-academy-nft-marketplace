@@ -6,37 +6,39 @@ import nfts from "../content/meta.json";
 import { NftMeta } from "@/types/nft";
 import { BaseLayout } from "@/components/ui";
 import NftList from "@/components/ui/nfts/list";
-import { useweb3 } from "@/components/providers/web3";
 import { useEffect, useState } from "react";
 import { ethers,formatUnits} from "ethers";
+import { useAccount } from "@/components/hooks";
 
 const Home: NextPage = () => {
-  
-  const { ethereum, provider,contract } = useweb3();
-  console.log("CONTRACT -", contract);
-  
-  const getInfo = async() =>{
-    // console.log(await contract!.getBalance())
-    console.log(await contract!.getAddress())
-  }
-  if(contract) console.log("THIS IS INFO",getInfo())
-  // const [accounts, setAccounts] = useState<string[] | null>(null);
 
-  useEffect(() => {
-    const fetchAccounts = async () => {
-      if (provider){
-        const res: string[] = await provider!.send("eth_requestAccounts", []);
-        console.log(res);
-        const signer = await provider.getSigner()
-        console.log("SIGNER -", signer)
-        console.log("ADDRESS ",signer.address)
-        const bal = provider.getBalance(signer.address)
-        console.log("BALANCE ",formatUnits(await bal,"ether"))
-        // setAccounts(res);
-      }
-    };
-    fetchAccounts();
-  }, [provider]);
+  const {account} = useAccount()
+  console.log(account)
+  // const { ethereum, provider,contract } = useweb3();
+  // console.log("CONTRACT -", contract);
+  
+  // const getInfo = async() =>{
+  //   // console.log(await contract!.getBalance())
+  //   console.log(await contract!.getAddress())
+  // }
+  // if(contract) console.log("THIS IS INFO",getInfo())
+  // // const [accounts, setAccounts] = useState<string[] | null>(null);
+
+  // useEffect(() => {
+  //   const fetchAccounts = async () => {
+  //     if (provider){
+  //       const res: string[] = await provider!.send("eth_requestAccounts", []);
+  //       console.log(res);
+  //       const signer = await provider.getSigner()
+  //       console.log("SIGNER -", signer)
+  //       console.log("ADDRESS ",signer.address)
+  //       const bal = provider.getBalance(signer.address)
+  //       console.log("BALANCE ",formatUnits(await bal,"ether"))
+  //       // setAccounts(res);
+  //     }
+  //   };
+  //   fetchAccounts();
+  // }, [provider]);
 
   return (
     <BaseLayout>
