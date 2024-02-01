@@ -6,8 +6,6 @@ import Walletbar from './Walletbar'
 import ActiveLink from '../link'
 
 
-
-
 const navigation = [
   { name: 'MarketPlace', href: '/', current: true },
   { name: 'Create nft', href: '/nft/create', current: false },
