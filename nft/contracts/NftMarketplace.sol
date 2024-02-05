@@ -15,10 +15,10 @@ contract NftMarketplace is ERC721URIStorage {
         owner = payable(msg.sender);
     }
 
-    struct ListedToken {
+    struct ListedToken {   
         uint256 tokenId;
         uint256 price;
-        address payable buyer;
+        address payable owner;
         address payable seller;
         bool currentlyListed;
     }
@@ -89,9 +89,22 @@ contract NftMarketplace is ERC721URIStorage {
         return tokens;
     }
 
-    
-
-
-
+    function getMyNfts() public view returns(ListedToken[] memory){
+        uint256 totalItemCount = _tokenIds.current();
+        
+        uint256 count=0;
+        for( uint i =0;i<totalItemCount;i++){
+            if(idToListedToken[i+1].owner==msg.sender){
+                count+=1;
+            }
+        }
+        ListedToken[] memory tokens = new ListedToken[](count);
+        for(uint i =0;i<totalItemCount ; i++){
+            if(idToListedToken[i+1].owner==msg.sender){
+                tokens[i] = idToListedToken[i+1];
+            }
+        }
+        return tokens;
+    }
 
 }

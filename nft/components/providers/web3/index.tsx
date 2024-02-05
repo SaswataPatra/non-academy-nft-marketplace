@@ -1,7 +1,7 @@
 import { MetaMaskInpageProvider } from "@metamask/providers";
 import { ethers } from "ethers";
 import { createContext, FunctionComponent, useState, useEffect, useContext } from "react";
-import { Web3State, createDefaultState, createWeb3State, loadContract } from "./utils";
+import {  Web3State, createDefaultState, createWeb3State, loadContract } from "./utils";
 
 const Web3Context = createContext<Web3State>(createDefaultState());
 
@@ -18,7 +18,7 @@ const Web3Provider: FunctionComponent<any> = ({ children }) => {
     var flag = 0
     useEffect(() => {
         async function initWeb3() {
-            const contract = await loadContract("SimpleStorage", provider!);
+            const contract = await loadContract("NftMarketplace", provider!);
 
             try {
                 setGlobalListeners(window.ethereum)

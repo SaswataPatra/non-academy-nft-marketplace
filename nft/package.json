@@ -12,7 +12,7 @@
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@metamask/providers": "^14.0.2",
-    "@openzeppelin/contracts": "^5.0.1",
+    "@openzeppelin/contracts": "^4.9.0",
     "@tailwindcss/forms": "^0.5.7",
     "@types/node": "20.8.9",
     "@types/react": "18.2.33",

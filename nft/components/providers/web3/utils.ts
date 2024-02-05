@@ -2,6 +2,8 @@ import { Web3Hooks, setupHooks } from "@/components/hooks/web3/setupHooks"
 import { Web3Dependencies } from "@/types/hooks"
 import { MetaMaskInpageProvider } from "@metamask/providers"
 import { BrowserProvider, Contract, ethers } from "ethers"
+//for hardhat
+// import {SimpleStorageAddress,NftMartketplaceAddress} from "../../../config"
 
 declare global {
   interface Window {
@@ -43,6 +45,23 @@ export const createWeb3State = ({ ethereum, provider, contract, isLoading }: Web
   }
 }
 
+//For hardhat 
+// export const LoadContract = async(
+//   name :string,
+//   provider : BrowserProvider
+// ) : Promise< Contract> =>{
+//   try{
+//     const res = await fetch(`artifacts/contracts/${name}.sol/${name}.json`);
+//     const Artifact = await res.json();
+//     console.log("Contract address : ", NftMartketplaceAddress)
+//     console.log("The artifact is :",Artifact)
+//     const contract = new ethers.Contract(NftMartketplaceAddress,Artifact.abi,provider)
+
+//     return contract
+//   }catch(error){
+//     return Promise.reject(`Contract ${name} cannot be loaded`);
+//   }
+// }
 
 const NETWORK_ID = 5777
 
@@ -50,7 +69,9 @@ export const loadContract = async (
   name: string,
   provider: BrowserProvider
 ): Promise<Contract> => {
+  debugger
   try {
+    debugger
     if (!NETWORK_ID) {
       return Promise.reject("Network ID is not defined!");
     }
@@ -77,4 +98,45 @@ export const loadContract = async (
     return Promise.reject(`Contract: [${name}] cannot be loaded!`)
   }
 
+}
+
+export async function addMaticNetwork() {
+  try {
+    const result = await window.ethereum.request({
+      method: "wallet_addEthereumChain",
+      params: [{
+        chainId: "0x89",
+        rpcUrls: ["https://polygon-rpc.com/"],
+        chainName: "Matic Mainnet",
+        nativeCurrency: {
+          name: "MATIC",
+          symbol: "MATIC",
+          decimals: 18
+        },
+        blockExplorerUrls: ["https://polygonscan.com/"]
+      }]
+    });
+  } catch (error){
+    console.log(error)
+  }
+}
+
+export async function addGanache() {
+  try {
+    const result = await window.ethereum.request({
+      method: "wallet_addEthereumChain",
+      params: [{
+        chainId: "0x89",
+        rpcUrls: ["HTTP://127.0.0.1:7545"],
+        chainName: "ganache",
+        nativeCurrency: {
+          name: "ETH",
+          symbol: "ETH",
+          decimals: 18
+        },
+      }]
+    });
+  } catch (error){
+    console.log(error)
+  }
 }

@@ -10,7 +10,8 @@ const NETWORKS: { [k: string]: string } = {
     1: "Ethereum Main network",
     5: "Goerli test network",
     11155111: "Sepolia Test Network",
-    1337: "Ganache"
+    1337: "Ganache",
+    31337 : "Hardhat",
 
 }
 const config: SWRConfiguration = {
