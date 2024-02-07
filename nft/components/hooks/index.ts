@@ -18,3 +18,11 @@ export const useNetwork = () =>{
         network : swrRes
     }
 }
+export const useContract =()=>{
+    const {hooks} = useWeb3()
+    const swrRes = hooks.useContract()
+
+    return {
+        contract : swrRes
+    }
+}
