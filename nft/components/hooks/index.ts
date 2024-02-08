@@ -1,6 +1,5 @@
 import { useWeb3 } from "../providers/web3";
 
-1
 export const useAccount = () => {
     // const hooks = useHooks();
     const { hooks } = useWeb3();
@@ -10,19 +9,19 @@ export const useAccount = () => {
         account: swrRes
     }
 }
-export const useNetwork = () =>{
-    const {hooks} = useWeb3()
+export const useNetwork = () => {
+    const { hooks } = useWeb3()
     const swrRes = hooks.useNetwork()
 
     return {
-        network : swrRes
+        network: swrRes
     }
 }
-export const useContract =()=>{
-    const {hooks} = useWeb3()
+export const useContract = () => {
+    const { hooks } = useWeb3()
     const swrRes = hooks.useContract()
 
     return {
-        contract : swrRes
+        contract: swrRes
     }
 }
